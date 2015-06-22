@@ -10,15 +10,16 @@ using namespace std;
 
 struct catalog {
   int num;
+  int aid[100000];
   string key_name[100000];
   string key_type[100000];
   int count[100000];
-  void operator=(const catalog& a) {
+  catalog& operator=(const catalog& a) {
     num = a.num;
-    for (int i = 1; i < num; i++) {
-      key_name[i - 1] = a.key_name[i - 1];
-      key_type[i - 1] = a.key_type[i - 1];
-      count[i - 1] = a.count[i - 1];
+    for (int i = 0; i < num; i++) {
+      key_name[i] = a.key_name[i];
+      key_type[i] = a.key_type[i];
+      count[i] = a.count[i];
     }
   }
 };
@@ -34,7 +35,7 @@ struct serial {
 
 int strtonum(string s);
 
-void get_bin();
+void get_bin(string file_name);
 
 string sertojson(serial ser, catalog* scanlog1);
 
